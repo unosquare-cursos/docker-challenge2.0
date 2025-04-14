@@ -1,0 +1,16 @@
+# TODO:
+
+# - Create a Docker compose file that will have 4 services: nginx proxy, red, yellow and green app
+# - All services should be on the same _external_ network
+# - Only the nginx proxy should have an exposed port 80
+# - All apps (except the proxy) should have a named volume mounted
+# - All apps (except proxy) should be built when we run _docker compose up_
+# - Nginx proxy should build the image from the nginx directory
+# - All the other apps have their own set of instructions in each directory
+# - Good luck!
+
+services:
+  nginx:
+  red:
+  yellow:
+  green:
