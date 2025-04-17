@@ -8,9 +8,48 @@
 # - Nginx proxy should build the image from the nginx directory
 # - All the other apps have their own set of instructions in each directory
 # - Good luck!
-
+version: '3.8'
 services:
   nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - challenge-network
+    depends_on:
+      - red
+      - yellow
+      - green
+
   red:
+    build:
+      context: ./red
+    volumes:
+      - red-data:/app
+    networks:
+      - challenge-network
+
   yellow:
+    build:
+      context: ./yellow
+    volumes:
+      - yellow-data:/app
+    networks:
+      - challenge-network
+
   green:
+    build:
+      context: ./green
+    volumes:
+      - green-data:/app
+    networks:
+      - challenge-network
+volumes:
+  red-data:
+  yellow-data:
+  green-data:
+
+networks:
+  challenge-network:
+    external: true
